@@ -1,34 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Key from './components/key'
+import Switcher from './components/switcher'
+import './styles/index.scss'
+
+const keys = [
+  '7',
+  '8',
+  '9',
+  'DEL',
+  '4',
+  '5',
+  '6',
+  '+',
+  '1',
+  '2',
+  '3',
+  '-',
+  '.',
+  '0',
+  '/',
+  'x',
+  'RESET',
+  '=',
+]
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main className="calculator theme1">
+      <div className="container">
+        <div className="panel">
+          <span>calc</span>
+          <span>theme</span>
+
+          <Switcher />
+        </div>
+        <div className="screen">3.9998554521</div>
+        <div className="keys">
+          {keys.map((key) => (
+            <Key key={key} CalcKey={key} />
+          ))}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    </main>
   )
 }
 
